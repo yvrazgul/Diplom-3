@@ -20,8 +20,7 @@ public class RegistrationTest {
     public void setUp() {
         String browserName = System.getProperty("browserName");
         driver = WebDriverFactory.get(browserName);
-        user  = RandomData.random();
-        userShortPwd = RandomData.generic();
+        user = new User(RANDOM_EMAIL, RANDOM_PASSWORD, RANDOM_NAME);
     }
 
     @Test
