@@ -16,18 +16,20 @@ import pageobject.RegistrationPage;
 public class RegistrationTest {
     private WebDriver driver;
     private User user;
+    private RegistrationPage registrationPage;
+
     @Before
     public void setUp() {
         String browserName = System.getProperty("browserName");
         driver = WebDriverFactory.get(browserName);
         user = new User(RANDOM_EMAIL, RANDOM_PASSWORD, RANDOM_NAME);
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.open();
     }
 
     @Test
     @DisplayName("Проверка регистрации со страницы регистрации")
     public void checkRegistrationFromRegistrationPageSuccess() {
-        RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.open();
         registrationPage.registerUser(user);
         registrationPage.clickRegister();
         LoginPage loginPage = new LoginPage(driver);
@@ -40,8 +42,6 @@ public class RegistrationTest {
     @Test
     @DisplayName("Проверка регистриции со страницы авторизации")
     public void checkRegistrationFromLoginPageSuccess() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.open();
         loginPage.clickRegisterButton();
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.registerUser(user);
@@ -55,8 +55,6 @@ public class RegistrationTest {
     @Test
     @DisplayName("Проверка регистрации с неправильным паролем")
     public void checkRegistrationWithWrongPassError() {
-        RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.open();
         registrationPage.registerUser(user);
         Assert.assertTrue(registrationPage.isWrongPasswordDisplayed());
     }
