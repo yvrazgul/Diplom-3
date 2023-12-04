@@ -1,5 +1,6 @@
-package src.main.java.api;
+package api;
 import lombok.Data;
+
 @Data
 public class Login {
     private String email;

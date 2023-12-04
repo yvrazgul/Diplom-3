@@ -1,10 +1,11 @@
-package src.main.java.pageobject;
+package pageobject;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static src.main.java.config.URL.BASE_URL;
+import static config.URL.BASE_URL;
+
 public class MainPage {
     private final WebDriver driver;
 

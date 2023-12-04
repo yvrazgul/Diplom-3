@@ -1,4 +1,4 @@
-package src.main.java.config;
+package config;
 
 public class URL {
     public static final String BASE_URL = "https://stellarburgers.nomoreparties.site/";

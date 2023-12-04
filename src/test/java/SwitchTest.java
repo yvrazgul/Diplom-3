@@ -1,7 +1,6 @@
-package src.test;
-import src.main.java.api.User;
-import src.main.java.api.UserSteps;
-import src.main.java.config.WebDriverFactory;
+import api.User;
+import api.UserSteps;
+import config.WebDriverFactory;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
@@ -9,15 +8,18 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import src.main.java.pageobject.LoginPage;
-import src.main.java.pageobject.MainPage;
-import src.main.java.pageobject.ProfilePage;
-import static config.RandomData;
+import pageobject.LoginPage;
+import pageobject.MainPage;
+import pageobject.ProfilePage;
+
 public class SwitchTest {
     public WebDriver driver;
     public UserSteps userSteps;
     public String accessToken;
     public User user;
+    public String RANDOM_EMAIL;
+    public String RANDOM_PASSWORD;
+    public String RANDOM_NAME;
     @Before
     public void setUp() {
         String browserName = System.getProperty("browserName");
@@ -61,7 +63,7 @@ public class SwitchTest {
         loginPage.enterEmailAndPassword(user);
         loginPage.clickLoginButton();
         ProfilePage profilePage = new ProfilePage(driver);
-        profilePage.clickLoginButton();
+        profilePage.clickLogoButton();
         Assert.assertTrue(mainPage.isAssembleBurgerDisplayed());
     }
     @After

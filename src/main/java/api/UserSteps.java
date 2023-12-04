@@ -1,8 +1,8 @@
-package src.main.java.api;
+package api;
 
-import static src.main.java.config.URL.*;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
+import static config.URL.*;
 import static io.restassured.RestAssured.given;
 
 public class UserSteps extends Client {

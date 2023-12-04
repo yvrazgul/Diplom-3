@@ -1,10 +1,10 @@
-package src.main.java.pageobject;
+package pageobject;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static src.main.java.config.URL.RECOVERY_PASSWORD_URL;
+import static config.URL.RECOVERY_PASSWORD_URL;
 
 public class PasswordRecoveryPage {
     private final By loginButton = By.xpath(".//a[text()='Войти']");

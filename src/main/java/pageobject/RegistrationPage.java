@@ -1,10 +1,12 @@
-package src.main.java.pageobject;
-import src.main.java.api.User;
+package pageobject;
+
+import api.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static src.main.java.config.URL.REGISTER_PAGE_URL;
+import static config.URL.REGISTER_PAGE_URL;
+
 
 public class RegistrationPage {
     private final WebDriver driver;

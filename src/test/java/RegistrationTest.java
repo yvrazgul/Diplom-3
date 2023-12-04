@@ -1,9 +1,7 @@
-package src.test;
-
-import src.main.java.api.Login;
-import src.main.java.api.User;
-import src.main.java.api.UserSteps;
-import src.main.java.config.WebDriverFactory;
+import api.Login;
+import api.User;
+import api.UserSteps;
+import config.WebDriverFactory;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
@@ -11,23 +9,24 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import src.main.java.pageobject.LoginPage;
-import src.main.java.pageobject.MainPage;
-import src.main.java.pageobject.RegistrationPage;
+import pageobject.LoginPage;
+import pageobject.MainPage;
+import pageobject.RegistrationPage;
 
-import static config.RandomData.*;
-public class RegistrationTest<ValidatableResponse> {
+public class RegistrationTest {
     private WebDriver driver;
     private User user;
     @Before
     public void setUp() {
         String browserName = System.getProperty("browserName");
         driver = WebDriverFactory.get(browserName);
+        user  = RandomData.random();
+        userShortPwd = RandomData.generic();
     }
+
     @Test
     @DisplayName("Проверка регистрации со страницы регистрации")
     public void checkRegistrationFromRegistrationPageSuccess() {
-        user = new User(RANDOM_EMAIL, RANDOM_PASSWORD, RANDOM_NAME);
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.open();
         registrationPage.registerUser(user);
@@ -42,7 +41,6 @@ public class RegistrationTest<ValidatableResponse> {
     @Test
     @DisplayName("Проверка регистриции со страницы авторизации")
     public void checkRegistrationFromLoginPageSuccess() {
-        user = new User(RANDOM_EMAIL, RANDOM_PASSWORD, RANDOM_NAME);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
         loginPage.clickRegisterButton();
@@ -58,7 +56,6 @@ public class RegistrationTest<ValidatableResponse> {
     @Test
     @DisplayName("Проверка регистрации с неправильным паролем")
     public void checkRegistrationWithWrongPassError() {
-        user = new User(RANDOM_EMAIL, RANDOM_PASSWORD_WRONG, RANDOM_NAME);
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.open();
         registrationPage.registerUser(user);
@@ -67,10 +64,12 @@ public class RegistrationTest<ValidatableResponse> {
     @After
     public void tearDown() {
         UserSteps userSteps = new UserSteps();
-        Login credentials = new Login(user.getClass(), user.getClass());
+        Login credentials = new Login(user.getEmail(), user.getPassword());
         ValidatableResponse responseLogin = userSteps.login(credentials);
         String accessToken = userSteps.getAccessToken(responseLogin);
         userSteps.deletingUsersAfterTests(accessToken);
         driver.quit();
     }
+
 }
+

@@ -1,12 +1,11 @@
-package src.test;
-import src.main.java.config.WebDriverFactory;
+import config.WebDriverFactory;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import src.main.java.pageobject.MainPage;
+import pageobject.MainPage;
 public class ConstructorTest {
     private WebDriver driver;
     private MainPage mainPage;

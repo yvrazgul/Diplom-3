@@ -1,10 +1,10 @@
-package src.main.java.api;
+package api;
 
 import io.restassured.specification.RequestSpecification;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 
-import static src.main.java.config.URL.BASE_URL;
+import static config.URL.BASE_URL;
 
 public class Client {
         protected RequestSpecification getSpec() {

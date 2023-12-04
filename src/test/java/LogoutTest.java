@@ -1,6 +1,5 @@
-package src.test;
-import src.main.java.api.User;
-import src.main.java.api.UserSteps;
+import api.User;
+import api.UserSteps;
 import config.WebDriverFactory;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
@@ -9,15 +8,22 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import src.main.java.pageobject.LoginPage;
-import src.main.java.pageobject.MainPage;
-import src.main.java.pageobject.ProfilePage;
-import static config.RandomData.*;
+import pageobject.LoginPage;
+import pageobject.MainPage;
+import pageobject.ProfilePage;
+
 public class LogoutTest {
     public WebDriver driver;
     public UserSteps userSteps;
     public String accessToken;
     public User user;
+    public String RANDOM_EMAIL;
+    public String RANDOM_PASSWORD;
+    public String RANDOM_NAME;
+
+    public LogoutTest() {
+    }
+
     @Before
     public void setUp() {
         String browserName = System.getProperty("browserName");

@@ -1,12 +1,12 @@
-package src.main.java.pageobject;
-import src.main.java.api.User;
+package pageobject;
+import api.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static src.main.java.config.URL.LOGIN_PAGE_URL;
+import static config.URL.LOGIN_PAGE_URL;
 
 public class LoginPage {
     private final WebDriver driver;
