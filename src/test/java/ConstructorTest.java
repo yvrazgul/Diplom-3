@@ -26,7 +26,7 @@ public class ConstructorTest {
         Assert.assertEquals(expected, mainPage.getTextFromCurrentMenu());
     }
     @Test
-    @DisplayName("Переход к разделу «Соусы»")
+    @org.junit.jupiter.api.DisplayName("Переход к разделу «Соусы»")
     public void checkMenuSaucesIsActiveSuccess() {
         mainPage = new MainPage(driver);
         mainPage.open();

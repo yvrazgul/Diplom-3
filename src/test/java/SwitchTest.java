@@ -11,15 +11,13 @@ import org.openqa.selenium.WebDriver;
 import pageobject.LoginPage;
 import pageobject.MainPage;
 import pageobject.ProfilePage;
+import static config.RandomData.*;
 
 public class SwitchTest {
     public WebDriver driver;
     public UserSteps userSteps;
     public String accessToken;
     public User user;
-    public String RANDOM_EMAIL;
-    public String RANDOM_PASSWORD;
-    public String RANDOM_NAME;
     @Before
     public void setUp() {
         String browserName = System.getProperty("browserName");
@@ -49,7 +47,7 @@ public class SwitchTest {
         loginPage.enterEmailAndPassword(user);
         loginPage.clickLoginButton();
         ProfilePage profilePage = new ProfilePage(driver);
-        profilePage.clickLogoutButton();
+        profilePage.clickConstructorButton();
         Assert.assertTrue(mainPage.isAssembleBurgerDisplayed());
     }
 
